@@ -1,0 +1,25 @@
+body {
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    height: 100vh;
+
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 50px;
+}
+
+.header > div {
+    font-size: 25px;
+    font-weight: bold;
+}
+.content {
+    background-color: orange;
+}
