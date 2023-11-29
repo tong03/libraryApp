@@ -14,3 +14,25 @@ function displayLibrary() {
         console.log(book);
     }
 }
+
+const addButton = document.getElementById("addBook");
+const addDialog = document.getElementById("addDialog");
+const submitButton = document.getElementById("submitButton");
+const bookForm = document.getElementById("bookForm");
+
+addDialog.addEventListener("click", () => {
+    addDialog.close();
+});
+
+bookForm.addEventListener("click", (event) => {
+    event.stopPropagation();
+});
+
+addButton.addEventListener("click", () => {
+    addDialog.showModal();
+});
+
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    addDialog.close();
+});
