@@ -18,15 +18,18 @@ function displayLibrary() {
 const addButton = document.getElementById("addBook");
 const addDialog = document.getElementById("addDialog");
 const submitButton = document.getElementById("submitButton");
-const bookForm = document.getElementById("bookForm");
+// const bookForm = document.getElementById("bookForm");
 
-addDialog.addEventListener("click", () => {
-    addDialog.close();
+addDialog.addEventListener("click", (event) => {
+    if (event.target == addDialog) {
+        addDialog.close();
+    }
+    // console.log(event.target);
 });
 
-bookForm.addEventListener("click", (event) => {
-    event.stopPropagation();
-});
+// bookForm.addEventListener("click", (event) => {
+//     event.stopPropagation();
+// });
 
 addButton.addEventListener("click", () => {
     addDialog.showModal();
