@@ -9,7 +9,7 @@
 <body>
     <div class="header">
         <div>Library</div>
-        <button>Sign in</button>
+        <button>Log in</button>
     </div>
 
     <div class="content">
@@ -18,15 +18,16 @@
                 <div id="formContainer">
                     <form id="bookForm">
                         <p>New Book</p>
-                        <input type="text" placeholder="Title">
-                        <input type="text" placeholder="Author">
+                        <input type="text" name="title" placeholder="Title">
+                        <input type="text" name="author" placeholder="Author">
+                        <input type="number" name="pages" placeholder="Pages">
                         <button id="submitButton">Submit</button>
                     </form>
                 </div>
             </dialog>
             <button id="addBook">+ Add a book</button>
         </div>
-        <div class="bookDisplay">
+        <div id="bookDisplay">
             <div class="book" id="Great Gatsby">
                 <p>"Great Gatsby"</p>
                 <p>Author 1</p>
