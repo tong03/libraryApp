@@ -173,3 +173,9 @@ form > button {
 form > button:hover {
     opacity: 80%;
 }
+
+/* Modify card */
+
+.rmCard:hover {
+    opacity: 75%;
+}
