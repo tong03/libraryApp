@@ -21,23 +21,27 @@ function addBookToLibrary(book) {
 
 function displayLibrary(myLibrary) {
     for (const book of myLibrary) {
-        console.log(book);
-        const bookCard = document.createElement("div");
-        bookCard.classList.add("book");
-        bookCard.setAttribute("id", book.title);
-        const titleName = document.createElement("p");
-        titleName.innerHTML = book.title;
-        const authorName = document.createElement("p");
-        authorName.innerHTML = book.author;
-        const readBtn = document.createElement("button");
-        readBtn.innerHTML = "Read";
-        const removeBtn = document.createElement("button");
-        removeBtn.innerHTML = "Remove";
-        bookCard.appendChild(titleName);
-        bookCard.appendChild(authorName);
-        bookCard.appendChild(readBtn);
-        bookCard.appendChild(removeBtn);
-        bookDisplay.appendChild(bookCard);
+        if (book == myLibrary[myLibrary.length - 1]){
+            const bookCard = document.createElement("div");
+            bookCard.classList.add("book");
+            bookCard.setAttribute("id", book.title);
+            const titleName = document.createElement("p");
+            titleName.innerHTML = book.title;
+            const authorName = document.createElement("p");
+            authorName.innerHTML = book.author;
+            const readBtn = document.createElement("button");
+            readBtn.innerHTML = "Read";
+            const removeBtn = document.createElement("button");
+            removeBtn.innerHTML = "Remove";
+            removeBtn.addEventListener("click", () => {
+
+            });
+            bookCard.appendChild(titleName);
+            bookCard.appendChild(authorName);
+            bookCard.appendChild(readBtn);
+            bookCard.appendChild(removeBtn);
+            bookDisplay.appendChild(bookCard);
+        }
     }
 }
 
@@ -59,9 +63,7 @@ submitButton.addEventListener("click", (event) => {
     const pages = bookForm.pages.value;
     const newBook = new Book(title, author, pages);
     addBookToLibrary(newBook);
-    // for (const pair of formData.entries()){
-    //     console.log(pair[0]);
-    // }
     displayLibrary(myLibrary);
+    bookForm.reset();
     addDialog.close();
 });
