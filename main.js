@@ -10,10 +10,11 @@ let i = 0;
 
 // constructor
 class Book {
-    constructor(author, title, pages){
+    constructor(title, author, pages, readStatus){
         this.title = title;
         this.author = author;
         this.pages = pages;
+        this.readStatus = readStatus;
     }
 }
 
@@ -37,11 +38,28 @@ function displayLibrary(myLibrary) {
             bookCard.setAttribute("index", i++);
             bookCard.setAttribute("id", book.title);
             const titleName = document.createElement("p");
-            titleName.innerHTML = book.title;
+            titleName.innerHTML = `"${book.title}"`;
             const authorName = document.createElement("p");
             authorName.innerHTML = book.author;
+            const pageNumber = document.createElement("p");
+            pageNumber.innerHTML = book.pages;
             const readBtn = document.createElement("button");
-            readBtn.innerHTML = "Read";
+            readBtn.classList.add('readCard');
+            readBtn.innerHTML = book.readStatus;
+            if(book.readStatus == "Read"){
+                readBtn.classList.add("done");
+            }
+            readBtn.addEventListener('click', (e) => {
+                e.target.classList.toggle('done');
+                // change readBtn textcontent to Read
+                if(e.target.classList.contains('done')){
+                    e.target.innerHTML = document.getElementById('readCheck').value;
+                }
+                // change readBtn textcontent to Not read
+                else{
+                    e.target.innerHTML = document.getElementById('readCheckHidden').value;
+                }
+            });
             const removeBtn = document.createElement("button");
             removeBtn.classList.add("rmCard");
             removeBtn.innerHTML = "Remove";
@@ -61,6 +79,7 @@ function displayLibrary(myLibrary) {
             });
             bookCard.appendChild(titleName);
             bookCard.appendChild(authorName);
+            bookCard.appendChild(pageNumber);
             bookCard.appendChild(readBtn);
             bookCard.appendChild(removeBtn);
             bookDisplay.appendChild(bookCard);
@@ -82,9 +101,22 @@ submitButton.addEventListener("click", (event) => {
     event.preventDefault();
     // const formData = new FormData(bookForm);
     const title = bookForm.title.value;
-    const author = (bookForm.author.value);
+    const author = bookForm.author.value;
     const pages = bookForm.pages.value;
-    const newBook = new Book(title, author, pages);
+    var readStatus='';
+    if (document.getElementById('readCheck').checked){
+        document.getElementById('readCheckHidden').disabled = true;
+        readStatus = document.getElementById('readCheck').value;
+    }
+    else{
+        readStatus = document.getElementById('readCheckHidden').value;
+    }
+    console.log("Title: ", title);
+    console.log("Author: ", author);
+    console.log("Pages: ", pages);
+    console.log("Status: ", readStatus);
+    
+    const newBook = new Book(title, author, pages, readStatus);
     addBookToLibrary(newBook);
     displayLibrary(myLibrary);
     bookForm.reset();

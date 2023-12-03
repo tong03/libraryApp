@@ -18,9 +18,14 @@
                 <div id="formContainer">
                     <form id="bookForm">
                         <p>New Book</p>
-                        <input type="text" name="title" placeholder="Title">
-                        <input type="text" name="author" placeholder="Author">
-                        <input type="number" name="pages" placeholder="Pages">
+                        <input type="text" name="title" placeholder="Title" required>
+                        <input type="text" name="author" placeholder="Author" required>
+                        <input type="number" name="pages" placeholder="Pages" required>
+                        <div class="readField">
+                            <label for="readCheck">Have you read it?</label>
+                            <input type="checkbox" id="readCheck" name="readStatus" value="Read">
+                            <input type="hidden" id="readCheckHidden" name="readStatus" value="Not read">
+                        </div>
                         <button id="submitButton">Submit</button>
                     </form>
                 </div>
