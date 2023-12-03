@@ -54,10 +54,12 @@ function displayLibrary(myLibrary) {
                 // change readBtn textcontent to Read
                 if(e.target.classList.contains('done')){
                     e.target.innerHTML = document.getElementById('readCheck').value;
+                    book.readStatus = document.getElementById('readCheck').value;
                 }
                 // change readBtn textcontent to Not read
                 else{
                     e.target.innerHTML = document.getElementById('readCheckHidden').value;
+                    book.readStatus = document.getElementById('readCheckHidden').value;
                 }
             });
             const removeBtn = document.createElement("button");
